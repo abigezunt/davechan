@@ -323,6 +323,33 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "/Users/abby/Code/sinatra-ar-blog/Gemfile",
+			"settings":
+			{
+				"buffer_size": 144,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "require 'pry'\nrequire 'pg'\nrequire 'sinatra'\nrequire 'sinatra/reloader' if development?\nrequire 'sinatra/activerecord'\n\nset :database, {adapter: 'postgresql', \n				database: 'ga-class-posts', \n				host: 'localhost'}\n\nclass Post < ActiveRecord::Base\nend\n\nget '/' do\n	# @posts = query(\"SELECT * FROM posts\")\n	@posts = Post.all\n	# binding.pry\n	erb :post_index\nend",
+			"file": "/Users/abby/Code/sinatra-ar-blog/main.rb",
+			"file_size": 358,
+			"file_write_time": 130259058770000000,
+			"settings":
+			{
+				"buffer_size": 360,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/abby/Code/sinatra-ar-blog/Rakefile",
+			"settings":
+			{
+				"buffer_size": 113,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -380,6 +407,10 @@
 	},
 	"file_history":
 	[
+		"/Users/abby/Code/sinatra-ar-blog/Gemfile",
+		"/Users/abby/Code/sinatra-ar-blog/Rakefile",
+		"/Users/abby/Code/sinatra-ar-blog/main.rb",
+		"/Users/abby/Code/sinatra-ar-blog/db/migrate/20131010184944_create_posts.rb",
 		"/Users/abby/Code/davechan/setup_database.sql",
 		"/Users/abby/Code/davechan/seed_database.sql",
 		"/Users/abby/Code/blog_practice/views/post_new.erb",
@@ -503,11 +534,7 @@
 		"/Users/abby/Code/ga-mtba-array-hash-homework/mbta2.rb",
 		"/Users/abby/Code/WDI_BOS_1/class_notes/week_01/ruby_basics.md",
 		"/Users/abby/Code/WDI_BOS_1/class_notes/week_01/methods_arrays_hashes.md",
-		"/Users/abby/Code/madlibs/test/madlibs_test.rb",
-		"/Users/abby/Code/madlibs/lib/madlibs/lovesong.txt",
-		"/Users/abby/Code/madlibs/lib/madlib2.rb",
-		"/Users/abby/Code/madlibs/lib/finished_madlibs_inspect.md",
-		"/Users/abby/Code/madlibs/lib/madlibs/finished_madlibs.md"
+		"/Users/abby/Code/madlibs/test/madlibs_test.rb"
 	],
 	"find":
 	{
@@ -640,8 +667,90 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "/Users/abby/Code/sinatra-ar-blog/Gemfile",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 144,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/Users/abby/Code/sinatra-ar-blog/main.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 360,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								339,
+								325
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/Users/abby/Code/sinatra-ar-blog/Rakefile",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 113,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								113,
+								113
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -717,7 +826,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 110.0,
+	"side_bar_width": 281.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
