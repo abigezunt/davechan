@@ -5,53 +5,48 @@ require 'pg'
 require 'sinatra/activerecord'
 
 set :database, {adapter: 'postgresql',
-                database: 'ga-class-posts',
+                database: 'ga-lab-posts',
                 host: 'localhost'}
 
 class Post < ActiveRecord::Base
 end
 
-get '/' do
-  @posts = Post.all
-  binding.pry
+get '/davechan' do
+  @posts = Post.all.order("created_at desc")
   erb :post_index
 end
 
+get '/davechan' do
+  @posts = @posts = Post.all.order("created_at desc").where(flagged?: false)
+  erb :post_index
+end
 
-# configure do |variable|
-# 	CONN = PG.connect(dbname: 'blog', host: 'localhost')
-# end
+post '/davechan/new' do
+  post_id = Post.create(url: params[:url], caption: params[:caption], name: params[:name])
+  redirect '/davechan/#{post_id}'
+end
 
-# def query(sql)
-# 	CONN.exec(sql)
-# end
+get '/davechan/:id' do
+  @post = Post.find(params[:id])
+  erb :post_show
+end
 
-# get '/davechan' do
-#   @posts = query("SELECT * FROM davechan ORDER BY date DESC")
-#   erb :post_index
-# end
+get '/davechan/:id/edit' do
+  @post = Post.find(params[:id])
+  erb :post_edit
+end
 
-# post '/davechan/new' do
-#   query("INSERT INTO davechan (url, caption, name) VALUES ('#{params[:url]}','#{params[:caption]}','#{params[:name]}')")
-#   redirect '/davechan'
-# end
+post '/davechan/:id/delete' do
+  flagged_post = Post.where(:id => params[:id])
+  flagged_post.flagged = true
+  flagged_post.save
+  redirect '/davechan'
+end
 
-# get '/davechan/:id' do
-#   @post = query("SELECT * FROM davechan WHERE id=#{params[:id]} LIMIT 1").first
-#   erb :post_show
-# end
-
-# get '/davechan/:id/edit' do
-#   @post = query("SELECT * FROM davechan WHERE id=#{params[:id]} LIMIT 1").first
-#   erb :post_edit
-# end
-
-# post '/davechan/:id/delete' do
-#   query("DELETE FROM davechan WHERE id=#{params[:id]}")
-#   redirect '/davechan'
-# end
-
-# post '/davechan/:id/update' do
-#   query ("UPDATE davechan SET caption='#{params[:id]}', name='#{params[:name]}' WHERE id = #{params[:id]}")
-#   redirect "/davechan/#{params[:id]}"
-# end
+post '/davechan/:id/update' do
+  updated_post = Post.where(id: params[:id])
+  updated_post.name = params[:name]
+  updated_post.caption = params[:caption]
+  updated_post.save
+  redirect "/davechan/#{params[:id]}"
+end
