@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20131010195026) do
     t.text     "url",        default: "http://placekitten.com/500/800"
     t.text     "caption",    default: "so cute! omg!!"
     t.text     "name",       default: "anonymous"
-    t.boolean  "flagged",    default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -2,7 +2,7 @@
 
   <a href="/davechan/<%= @post.id%>"><img src="<%= @post.url%>"></a>
   <h2 class="caption"><%= @post.caption%></h2>
-  <p class="name_and_date">posted by <%= @post.name%> on <%= @post.date%></p>
+  <p class="name_and_date">posted by <%= @post.name%> on <%= @post.updated_at%></p>
 
   <a href="/davechan/<%= @post.id%>/edit">Edit Caption</a>
   <form action="/davechan/<%= @post.id%>/delete" method="post">
