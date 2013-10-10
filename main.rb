@@ -11,19 +11,27 @@ set :database, {adapter: 'postgresql',
 class Post < ActiveRecord::Base
 end
 
-Post.create(url: "http://placekitten.com/490/700", name: "abby", caption: "cat cat cat")
-Post.create(url: "http://placekitten.com/400/850", name: "Abby", caption: "kittennnns")
-Post.create(url: "http://placekitten.com/460/850", name: "abby", caption: "meow")
+
+# Post.create(url: "http://placekitten.com/490/700", name: "abby", caption: "cat cat cat")
+# Post.create(url: "http://placekitten.com/400/850", name: "Abby", caption: "kittennnns")
+# Post.create(url: "http://placekitten.com/460/850", name: "abby", caption: "meow")
+
 
 
 get '/davechan' do
-  @posts = Post.all.order("created_at desc")
+  @posts = Post.all
+  binding.pry
+  erb :post_index
+end
+
+get '/davechan' do
+  @posts = Post.order("updated_at DESC")
   erb :post_index
 end
 
 post '/davechan/new' do
-  Post.create(url: params[:url], caption: params[:caption], name: params[:name])
-  redirect '/davechan/#{params[:id]}'
+  new_post = Post.create(url: params[:url], caption: params[:caption], name: params[:name])
+  redirect '/davechan/#{new_post.id}'
 end
 
 get '/davechan/:id' do
@@ -37,8 +45,7 @@ get '/davechan/:id/edit' do
 end
 
 post '/davechan/:id/delete' do
-  flagged_post = Post.where(:id => params[:id])
-  flagged_post.delete
+  Post.delete(params[:id])
   redirect '/davechan'
 end
 
