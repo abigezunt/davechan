@@ -1,0 +1,11 @@
+<div class="entire-post">
+<% @posts.each do |post| %>
+  
+  <a href="/davechan/<%= post["id"]%>"><img src="<%= post["url"]%>"></a>
+  <h2 class="caption"><%= post["caption"]%></h2>
+  <p class="name_and_date">posted by <%= post["name"]%> on <%= post["date"]%></p>
+
+
+<% end %>
+</div>
+

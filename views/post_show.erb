@@ -1,0 +1,13 @@
+<div class="entire-post">
+
+  <a href="/davechan/<%= @post["id"]%>"><img src="<%= @post["url"]%>"></a>
+  <h2 class="caption"><%= @post["caption"]%></h2>
+  <p class="name_and_date">posted by <%= @post["name"]%> on <%= @post["date"]%></p>
+
+  <a href="/davechan/<%= @post["id"]%>/edit">Edit Caption</a>
+  <form action="/davechan/<%= @post["id"]%>/delete" method="post">
+  <input type="submit" name="delete post" value="report this post" />
+  </form>
+
+</div>
+
