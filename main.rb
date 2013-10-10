@@ -12,8 +12,13 @@ def query(sql)
 end
 
 get '/davechan' do
-  @posts = query("SELECT * FROM davechan ORDER BY date")
+  @posts = query("SELECT * FROM davechan ORDER BY date DESC")
   erb :post_index
+end
+
+post '/davechan/new' do
+  query("INSERT INTO davechan (url, caption, name) VALUES ('#{params[:url]}','#{params[:caption]}','#{params[:name]}')")
+  redirect '/davechan'
 end
 
 get '/davechan/:id' do
