@@ -18,20 +18,19 @@ end
 
 
 
-get '/davechan' do
+get '/davechan/' do
   @posts = Post.all
-  binding.pry
   erb :post_index
 end
 
-get '/davechan' do
+get '/davechan/' do
   @posts = Post.order("updated_at DESC")
   erb :post_index
 end
 
 post '/davechan/new' do
-  new_post = Post.create(url: params[:url], caption: params[:caption], name: params[:name])
-  redirect '/davechan/#{new_post.id}'
+  Post.create(url: params[:url], caption: params[:caption], name: params[:name])
+  redirect '/davechan/'
 end
 
 get '/davechan/:id' do
@@ -46,11 +45,11 @@ end
 
 post '/davechan/:id/delete' do
   Post.delete(params[:id])
-  redirect '/davechan'
+  redirect '/davechan/'
 end
 
 post '/davechan/:id/update' do
-  updated_post = Post.where(id: params[:id])
+  updated_post = Post.find(params[:id])
   updated_post.name = params[:name]
   updated_post.caption = params[:caption]
   updated_post.save

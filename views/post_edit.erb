@@ -2,7 +2,7 @@
 
   <a href="/davechan/<%= @post.id%>"><img src="<%= @post.url%>"></a>
   
-  <form action="/davechan/<%@post.id%>/update" method="post">
+  <form action="/davechan/<%=@post.id%>/update" method="post">
   <div><h2>A Less-Upsetting Caption: <input type="text" name="caption" value="<%= @post.caption%>" /></h2></div>
   <div><h2>Your name: <input type="text" name="name" value="<%= @post.name%>"></h2></div>
   <button type="submit">Update Caption</button>

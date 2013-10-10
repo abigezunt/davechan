@@ -25,7 +25,10 @@ img {
 	margin: 20px 0px;
 }
 
-/*class="add-new-post-box
+.add-new-post-box {
+	background-color: rgba(109, 140, 255, .5)
+	margin: auto;
+}
 
 class="entire-post"*/
 

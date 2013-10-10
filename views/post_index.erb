@@ -1,16 +1,16 @@
-<!-- <div class="add-new-post-box"><h2>Add a new photo:</h2>
+<div class="add-new-post-box"><h2>Add a new photo:</h2>
 <form action="/davechan/new" method="post">
 	<div>Photo URL: <input type="text" name="url" value="http://placekitten.com/500/800"/></div>
 	<div>Caption: <input type="text" name="caption" value="so cute, omg!!!" /></div>
 	<div>Your name: <input type="text" name="name" value="anonymous" /></div>
 	<button type="submit">Publish</button>
 </form>
-</div> -->
+</div>
 
 <div class="all-posts">
 <% @posts.each do |post| %>
   <div class="one-whole-post">
-    <a href="/davechan/<%= post.id%>"><img src="<%= post.url%>"></a>
+    <a href="/davechan/<%= post.id%>"><img src="<%= post.url%>" /></a>
     <h2 class="caption"><%= post.caption%></h2>
     <p class="name_and_date">posted by <%= post.name%> on <%= post.updated_at%></p>
   </div>
